@@ -1,7 +1,8 @@
 import paho.mqtt.client as client
-import RPi.GPIO as gpio
 from threading import Thread
 import time
+
+from led_sensor import LED
 
 class MqttWorker:
     def __init__(self):
@@ -9,8 +10,10 @@ class MqttWorker:
         self.client.on_connect = self.on_connect
         self.client.on_message = self.on_message
         
+        self.led = LED()
+        
     # 연결접속 함수
-    def on_connect(self, client, userdata, flag, rc):
+    def on_connect(self, client, userdata, flags, rc):
         print("connect..."+str(rc))
         time.sleep(0.5)
         if rc==0:
@@ -18,7 +21,16 @@ class MqttWorker:
         else:
             print("연결실패")
     
-    
+    def on_message(self, client, userdata, message):
+        myval = message.payload.decode("utf-8").split(":")
+        print(message.topic+"===>", myval)
+       
+        # 테스트코드 
+        # data = myval[0]
+        # if data == "led_on":
+        #     self.led.led_on()
+        # elif data == "led_off":
+        #     self.led.led_off()
     
     def mqtt_connect(self):
         try:

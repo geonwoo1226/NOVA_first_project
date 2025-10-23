@@ -30,5 +30,3 @@ class ServoMorter:
         finally:
             self.pwm.stop()
             gpio.cleanup()
-
-ServoMorter(2).curtain_open()
