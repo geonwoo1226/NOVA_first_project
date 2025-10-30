@@ -38,16 +38,9 @@ LCD1602 디스플레이(2), 온습도센서(DHT11)(1), 미니 워터펌프(1), 2
 
 | 이름 | 역할 및 담당 업무 | 개인 Git |
 | --- | --- | --- |
-| **이다온** | • 콘솔 UI구현
-• DB 설계 및 디자인
-• 자바 MQTT 통신 | [GitHub](https://github.com/DaOn1072) |
-|  **노건우** | • 라즈베리파이 모듈 설계 및 구축
-• Python 소스코드 전체 작업
-• Python 데이터 통신 구현
-• Python MQTT 통신구현 | [GitHub](https://github.com/geonwoo1226) |
-|  **안창석** | • 자바 MQTT통신구현
-• 결과 발표
-• 깃허브구축 및 설계 | [GitHub](https://github.com/AhnCSK) |
+| **이다온** | • 콘솔 UI구현<br>• DB 설계 및 디자인<br>• 자바 MQTT 통신 | [GitHub](https://github.com/DaOn1072) |
+|  **노건우** | • 라즈베리파이 모듈 설계 및 구축<br>• Python 소스코드 전체 작업<br>• Python 데이터 통신 구현<br>• Python MQTT 통신구현 | [GitHub]https://github.com/geonwoo1226) |
+|  **안창석** | • 자바 MQTT통신구현<br>• 결과 발표<br>• 깃허브구축 및 설계 | [GitHub](https://github.com/AhnCSK) |
 
 ---
 
