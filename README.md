@@ -25,9 +25,7 @@ JDBC를 포함한 자바 소스코드 전체 : https://github.com/geonwoo1226/fs
 | **목표** | 라즈베리파이 센서 입력 데이터를 통합해 **내 아파트 정보/ 마트 물품구입 / 입주민 게시판 조회** 등을 콘솔로 제공 |
 | **주요성과** | 입주민 커뮤니티 게시판, 마트 물품구입 요약 집계, 아파트 호수별 실시간 정보 콘솔 시각화 구축 |
 | **기간** | 2025.10.21 – 2025.10.29 |
-| **사용 센서 목록
-(18)** | LED(6), Buzzer(2), Button(3),  9G servo(2), PIR 센서(HC-SR501)(1), 초음파센서(Ultrasonic ranging)(1),
-LCD1602 디스플레이(2), 온습도센서(DHT11)(1), 미니 워터펌프(1), 2채널 모터드라이버(L9110S)(1), RFID리더기(RC522)(1) |
+| **사용 센서 목록<br>(18)** | LED(6), Buzzer(2), Button(3),  9G servo(2), PIR 센서(HC-SR501)(1), 초음파센서(Ultrasonic ranging)(1), LCD1602 디스플레이(2), 온습도센서(DHT11)(1), 미니 워터펌프(1), 2채널 모터드라이버(L9110S)(1), RFID리더기(RC522)(1) |
 | **산출물** | 라즈베리파이 구현물 ,Java 앱, 데이터베이스 , PPT, README 문서 |
 
 ---
@@ -39,7 +37,7 @@ LCD1602 디스플레이(2), 온습도센서(DHT11)(1), 미니 워터펌프(1), 2
 | 이름 | 역할 및 담당 업무 | 개인 Git |
 | --- | --- | --- |
 | **이다온** | • 콘솔 UI구현<br>• DB 설계 및 디자인<br>• 자바 MQTT 통신 | [GitHub](https://github.com/DaOn1072) |
-|  **노건우** | • 라즈베리파이 모듈 설계 및 구축<br>• Python 소스코드 전체 작업<br>• Python 데이터 통신 구현<br>• Python MQTT 통신구현 | [GitHub]https://github.com/geonwoo1226) |
+|  **노건우** | • 라즈베리파이 모듈 설계 및 구축<br>• Python 소스코드 전체 작업<br>• Python 데이터 통신 구현<br>• Python MQTT 통신구현 | [GitHub](https://github.com/geonwoo1226) |
 |  **안창석** | • 자바 MQTT통신구현<br>• 결과 발표<br>• 깃허브구축 및 설계 | [GitHub](https://github.com/AhnCSK) |
 
 ---
@@ -100,8 +98,7 @@ LCD1602 디스플레이(2), 온습도센서(DHT11)(1), 미니 워터펌프(1), 2
 | **역할** | 사용자 인터페이스 제공 |
 | **기능** | 로그인/회원가입, 센서 조회, 제어 명령, 커뮤니티, 마트 확인 등 |
 | **기술** | Java (Swing 또는 JavaFX), JDBC |
-| **연동** | - MySQL DB (회원 정보, 데이터 조회)
-- MQTT 브로커 (제어 명령 송신) |
+| **연동** | - MySQL DB (회원 정보, 데이터 조회)<br>- MQTT 브로커 (제어 명령 송신) |
 
 ```
             │
@@ -110,15 +107,14 @@ LCD1602 디스플레이(2), 온습도센서(DHT11)(1), 미니 워터펌프(1), 2
             ▼
 ```
 
-1. 데이터베이스 (MySQL)
+2. 데이터베이스 (MySQL)
 
 | 항목 | 설명 |
 | --- | --- |
 | **역할** | 시스템 전체 데이터 저장 및 조회 |
 | **기능** | 회원, 센서로그, 제어기록, 게시판, 마트주문 정보 저장 |
 | **기술** | MySQL |
-| **연동** | - Java 앱과 JDBC로 연결
-- Raspberry Pi에서 센서 및 제어 로그 저장 |
+| **연동** | - Java 앱과 JDBC로 연결<br>- Raspberry Pi에서 센서 및 제어 로그 저장 |
 
 | 주요 테이블 | 설명 |
 | --- | --- |
@@ -134,15 +130,14 @@ LCD1602 디스플레이(2), 온습도센서(DHT11)(1), 미니 워터펌프(1), 2
              ▼
 ```
 
-1. MQTT 브로커 (Mosquitto 등)
+3. MQTT 브로커 (Mosquitto 등)
 
 | 항목 | 설명 |
 | --- | --- |
 | **역할** | 센서 데이터 송신 및 제어 명령 중계 |
 | **기능** | MQTT 프로토콜을 통해 메시지 송수신 |
 | **기술** | MQTT (Mosquitto 등 브로커 사용) |
-| **연동** | - Raspberry Pi ↔ 브로커 (센서 publish, 제어 subscribe)
-- Java 앱 ↔ 브로커 (제어 publish) |
+| **연동** | - Raspberry Pi ↔ 브로커 (센서 publish, 제어 subscribe)<br>- Java 앱 ↔ 브로커 (제어 publish) |
 
 | 주요 토픽 예시 | 설명 |
 | --- | --- |
@@ -158,15 +153,14 @@ LCD1602 디스플레이(2), 온습도센서(DHT11)(1), 미니 워터펌프(1), 2
              ▼
 ```
 
-1. Raspberry Pi (Python)
+4. Raspberry Pi (Python)
 
 | 항목 | 설명 |
 | --- | --- |
 | **역할** | 센서 데이터 수집 및 제어 장치 동작 |
 | **기능** | 센서 Publish, 제어 Subscribe, DB 저장 |
 | **기술** | Python, paho-mqtt, RPi.GPIO, MySQL Connector |
-| **연동** | - MQTT 브로커: 센서 데이터 전송 & 제어 명령 수신
-- MySQL: 로그 저장 |
+| **연동** | - MQTT 브로커: 센서 데이터 전송 & 제어 명령 수신<br>- MySQL: 로그 저장 |
 
 | 하드웨어 구성 | 동작 설명 |
 | --- | --- |
@@ -205,18 +199,13 @@ LCD1602 디스플레이(2), 온습도센서(DHT11)(1), 미니 워터펌프(1), 2
 | UI (사용자 콘솔) | Java 콘솔 앱 |
 | 사용자 인증 | Java + JDBC + MySQL (`users` 테이블) |
 | 통신 계층 | MQTT (Mosquitto 브로커) |
-| IoT 제어 | 사용모델 및 언어 : Raspberry Pi + Python 
-사용 라이브러리 : GPIO, smbus2, Adafruit-DHT(DHT11), Spidev, mfrc522 |
+| IoT 제어 | 사용모델 및 언어 : Raspberry Pi + Python<br>사용 라이브러리 : GPIO, smbus2, Adafruit-DHT(DHT11), Spidev, mfrc522 |
 | DB 계층 | MySQL (회원, 센서, 게시판, 구매 로그 등) |
 | MQTT 라이브러리 | Eclipse Paho (Java, Python 클라이언트 모두 지원) |
 
 📌 구조 특징 요약
 
-✅ 로그인 기반 사용자 식별
-✅ MQTT로 IoT 장치 실시간 제어/수신
-✅ Java ↔ DB 연동으로 사용자 맞춤형 기능 제공
-✅ Raspberry Pi에서 센서 상태 지속 감지 및 전송
-✅ 보안 기능 강화 가능 (비밀번호 해시, 외출모드)
+✅ 로그인 기반 사용자 식별<br>✅ MQTT로 IoT 장치 실시간 제어/수신<br>✅ Java ↔ DB 연동으로 사용자 맞춤형 기능 제공<br>✅ Raspberry Pi에서 센서 상태 지속 감지 및 전송<br>✅ 보안 기능 강화 가능 (비밀번호 해시, 외출모드)
 
 ### 🧮 데이터 테이블 설계
 
