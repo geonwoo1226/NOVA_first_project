@@ -1,1 +1,0 @@
-# NOVA_first_project
